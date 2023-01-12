@@ -1,0 +1,29 @@
+@startuml "Strategy_pattern"
+abstract Vehicle
+Vehicle : engine()
+Vehicle : body()
+Drive_Strategy *-- Vehicle
+
+class Personal_Vehicle
+Vehicle <|-- Personal_Vehicle
+
+class Sports_Vehicle
+Vehicle <|-- Sports_Vehicle
+
+class Passenger_Vehicle
+Vehicle <|-- Passenger_Vehicle
+
+note as N1
+  creating a separate interface as a drive strategy instead of creating a drive function in the Vehicle interface
+  as drive could be the same for Personal_Vehicle and Passenger_Vehicle which leads to duplicate code in both class.
+end note
+interface Drive_Strategy
+Drive_Strategy : drive()
+
+class Normal_drive
+Drive_Strategy <|-- Normal_drive 
+
+class Sports_drive
+Drive_Strategy <|-- Sports_drive
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml "Factory_pattern"
+
+class Shape_Factory
+Shape *-- Shape_Factory
+Shape_Factory : get_shape()
+
+interface Shape
+Shape : draw()
+
+class Rectangle
+Shape <|-- Rectangle
+
+class Square
+Shape <|-- Square
+
+class Circle
+Shape <|-- Circle
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml "Builder Design pattern"
+
+class Director_Builder
+Director_Builder : Desktop_Builder* m_desktop_builder
+Director_Builder : void build_desktop()
+Director_Builder : Desktop* get_desktop()
+
+abstract Desktop_Builder
+Director_Builder *-- Desktop_Builder
+Desktop_Builder : Desktop* m_desktop
+Desktop_Builder : void build_monitor() = 0
+Desktop_Builder : void build_keyboard() = 0
+Desktop_Builder : void build_processor() = 0
+Desktop_Builder : void build_mouse() = 0
+Desktop_Builder : Desktop* get_desktop()
+
+class Dell_Builder
+Desktop_Builder <|-- Dell_Builder
+Dell_Builder : void build_monitor()
+Dell_Builder : void build_keyboard()
+Dell_Builder : void build_processor()
+Dell_Builder : void build_mouse()
+
+class HP_Builder
+Desktop_Builder <|-- HP_Builder
+HP_Builder : void build_monitor()
+HP_Builder : void build_keyboard()
+HP_Builder : void build_processor()
+HP_Builder : void build_mouse()
+
+class Desktop
+Desktop_Builder *-- Desktop
+Desktop : string m_monitor
+Desktop : string m_keyboard
+Desktop : string m_mouse
+Desktop : string m_processor
+Desktop : void set_monitor(string)
+Desktop : void set_keyboard(string)
+Desktop : void set_mouse(string)
+Desktop : void set_processor(string)
+Desktop : void get_specs()
+
+@enduml

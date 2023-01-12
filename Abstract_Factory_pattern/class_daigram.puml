@@ -1,0 +1,37 @@
+@startuml "Abstart factory pattern"
+
+class GUI_Factory
+IFactory *-- GUI_Factory
+GUI_Factory : create_factory()
+
+interface IFactory
+IFactory : create_button()
+IFactory : create_textbox()
+IButton *-- IFactory
+ITextbox *-- IFactory
+
+class Mac_Factory
+IFactory <|-- Mac_Factory
+
+class Windows_Factory
+IFactory <|-- Windows_Factory
+
+interface IButton
+IButton : press()
+
+class Windows_Button
+IButton <|-- Windows_Button
+
+class Mac_Button
+IButton <|-- Mac_Button
+
+interface ITextbox
+ITextbox : show_text()
+
+class Windows_Textbox
+ITextbox <|-- Windows_Textbox
+
+class Mac_Textbox
+ITextbox <|-- Mac_Textbox
+
+@enduml

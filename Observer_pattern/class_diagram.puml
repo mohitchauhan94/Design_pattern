@@ -1,0 +1,24 @@
+@startuml "Observer_pattern"
+
+interface Notification_Observer
+Notification_Observer : update()
+
+class Mobile_Notification
+Notification_Observer <|-- Mobile_Notification
+
+class Email_Notification
+Notification_Observer <|-- Email_Notification
+
+interface Stocks
+Notification_Observer *-- Stocks
+Stocks : List<Notification_Observer>
+Stocks : add()
+Stocks : remove()
+Stocks : notify()
+Stocks : set_data()
+Stocks : get_data()
+
+class Iphone
+Stocks <|-- Iphone
+
+@enduml

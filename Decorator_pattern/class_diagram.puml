@@ -1,0 +1,21 @@
+@startuml "Decorataor_pattern"
+interface BasePizza
+BasePizza : cost()
+
+class Margherita
+BasePizza <|-- Margherita
+
+class Vegdelight
+BasePizza <|-- Vegdelight
+
+interface Topping_Decorator
+BasePizza <|-- Topping_Decorator
+BasePizza *-- Topping_Decorator
+
+class Extra_Cheese_Topping
+Topping_Decorator <|-- Extra_Cheese_Topping
+
+class Mushroom_Topping
+Topping_Decorator <|-- Mushroom_Topping
+
+@enduml
